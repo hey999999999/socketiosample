@@ -1,7 +1,8 @@
 const socket = require('socket.io-client')('http://localhost:3000');
 socket.on('connect', () => {
-  console.log('yea!!');
-  socket.emit('chat message', 'how are you?');
+  const text = process.argv.join();
+  console.log(text);
+  socket.emit('chat message', text);
   setTimeout(() => {
     socket.disconnect();
     process.exit(0);
